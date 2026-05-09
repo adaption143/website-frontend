@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption Impact Initiative | Reframe Tech Language</title>
+    <meta name="description" content="A nonprofit advocacy group working to remove the term 'adoption' from tech language to respect adoptee lived experiences.">
+    <style>
+       :root {
+    /* Modern Professional Palette */
+    --primary-color: #1e40af;       /* Deep Blue (Trust, Stability) */
+    --primary-hover: #1e3a8a;       /* Darker Blue for hover states */
+    --secondary-color: #3b82f6;     /* Bright Blue (Energy, Clarity) */
+    --accent-color: #0ea5e9;        /* Sky/Cyan Blue (Modern touch) */
+    --dark-text: #0f172a;           /* Near Black Slate (Readability) */
+    --light-bg: #f8fafc;            /* Very Light Blue-Gray (Clean background) */
+    --white: #ffffff;
+    --shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1); /* Blue-Gray shadow */
+    --radius: 8px;
+    
+    /*Neutral Gray Scale for UI elements */
+    --border-color: #e2e8f0;
+    --text-muted: #64748b;
+}
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #4fd1c5);
+            color: var(--white);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--secondary-color);
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* Values Wheel Section */
+        #values {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-text);
+            text-align: center;
+        }
+
+        .wheel-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 2px solid #cbd5e0;
+        }
+
+        .value-card:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-color);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            color: var(--primary-color);
+            font-size: .9rem;
+        }
+
+        /* Problem & Solution Section */
+        #content {
+            padding: 4rem 5%;
+            background-color: var(--white);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .problem-box {
+            background-color: #fff5f5; /* Light red bg */
+            padding: 2rem;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .solution-box {
+            background-color: #f0fff4; /* Light green/teal bg */
+            padding: 2rem;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .word-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .word-list li {
+            background: var(--white);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: var(--radius);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .word-list li span.bad {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .word-list li span.good {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Petition Section */
+        #pledge {
+            padding: 5rem 5%;
+            background-color: var(--dark-text);
+            color: var(--white);
+            text-align: center;
+        }
+
+        #pledge h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pledge-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: var(--radius);
+            border: 1px solid #cbd5e0;
+            font-family: inherit;
+        }
+
+        /* Contact/Outreach */
+        #outreach {
+            padding: 4rem 5%;
+            background-color: var(--light-bg);
+        }
+
+        .mail-merge-template {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow-x: auto;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: var(--radius);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a202c;
+            color: #a0aec0;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--white);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .grid-container { grid-template-columns: 1fr; }
+            nav { flex-direction: column; gap: 1rem; }
+            .nav-links a { margin: 0 10px; }
+        }
+
+        /* Animation for Values Wheel */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-hover:hover {
+            animation: float 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Adoption<span>Impact</span></a>
+        <div class="nav-links">
+            <a href="#values">Our Values</a>
+            <a href="#content">The Issue</a>
+            <a href="#pledge">Take Pledge</a>
+            <a href="#outreach">For Teams</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <h1>Language Matters. Respect Lives.</h1>
+        <p class="tagline">"Redefine Innovation. Respect Lives."</p>
+        <img src="img/logo2.png" alt="Adoption Impact Initiative logo" style="width: 100%; max-width: 500px; height: auto; margin: 1.5rem auto; display: block;">
+        <p style="max-width: 700px; margin: 0 auto 2rem;">
+            We are the Adoption Impact Initiative (AII). We advocate for the removal of the term "adoption" in technology contexts, as it causes harm and erasure to millions of adoptees.
+        </p>
+        <a href="#pledge" class="btn btn-primary">Take the Pledge</a>
+        <a href="#content" class="btn btn-secondary">Learn Why</a>
+    </header>
+
+    <!-- Mission & Values -->
+    <section id="values">
+        <h2 class="section-title">Our Mission & Values</h2>
+        
+        <div style="max-width: 800px; margin: 0 auto 3rem; text-align: center; background: var(--white); padding: 2rem; border-radius: var(--radius);">
+            <h3 style="color: var(--primary-color); font-size: 1.4rem; margin-bottom: 0.5rem;">Mission Statement</h3>
+            <p>"To eliminate the use of the term ‘adoption’ for new technology because it harms adoptees and their families, and to replace it with respectful, inclusive language."</p>
+            
+            <h3 style="color: var(--primary-color); font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.5rem;">Vision</h3>
+            <p>"A world where every tech rollout is described with language that honors all lived experiences."</p>
+        </div>
+
+        <div class="wheel-container">
+            <!-- 1. Respect -->
+            <div class="value-card animate-hover" style="border-color: var(--secondary-color);">
+                <div class="value-icon">❤️</div>
+                <h3>Respect for Lived Experience</h3>
+            </div>
+            
+            <!-- 2. Evidence -->
+            <div class="value-card animate-hover" style="border-color: var(--primary-color);">
+                <div class="value-icon">📊</div>
+                <h3>Evidence-Based Advocacy</h3>
+            </div>
+
+            <!-- 3. Collaboration -->
+            <div class="value-card animate-hover" style="border-color: var(--accent-color);">
+                <div class="value-icon">🤝</div>
+                <h3>Collaboration & Inclusivity</h3>
+            </div>
+
+            <!-- 4. Transparency -->
+            <div class="value-card animate-hover" style="border-color: #4299e1;">
+                <div class="value-icon">🔍</div>
+                <h3>Transparency</h3>
+            </div>
+
+            <!-- 5. Innovation -->
+            <div class="value-card animate-hover" style="border-color: #9f7aea;">
+                <div class="value-icon">🚀</div>
+                <h3>Innovation</h3>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- The Issue & Solution -->
+    <section id="content">
+        <h2 class="section-title">The Problem in Tech</h2>
+        
+        <div class="grid-container">
+            <!-- The Harm -->
+            <div class="problem-box">
+                <h3 style="color: var(--secondary-color); font-size: 1.8rem; margin-bottom: 1rem;">Why "Adoption" Hurts</h3>
+                <p style="margin-bottom: 1rem;">
+                    In the tech industry, we often say "product adoption," "user adoption," or "feature adoption" to describe the rollout of software.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    For adoptees, this word is deeply triggering. It erases the complex trauma, loss, and identity struggles associated with being "adopted" and reduces that experience to a simple corporate metric.
+                </p>
+                <ul class="word-list">
+                    <li><span class="bad">✗ "Product Adoption"</span> - Reduces human life to a metric.</li>
+                    <li><span class="bad">✗ "User Adoption"</span> - Implies users are objects to be claimed.</li>
+                </ul>
+            </div>
+
+            <!-- The Fix -->
+            <div class="solution-box">
+                <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1rem;">The Respectful Alternative</h3>
+                <p style="margin-bottom: 1rem;">
+                    We can be precise and professional without causing harm. The tech industry already uses words like "implementation" and "rollout" in other contexts—let's use them universally.
+                </p>
+                <ul class="word-list">
+                    <li><span class="good">✓ "Product Implementation"</span> - Accurate and professional.</li>
+                    <li><span class="good">✓ "Feature Rollout"</span> - Describes the action without trauma.</li>
+                </ul>
+                <div style="margin-top: 2rem; background: rgba(0,0,0,0.05); padding: 1rem; border-radius: var(--radius);">
+                    <strong>Replacement Dictionary:</strong>
+                    <br><br>
+                    Adoption → Implementation / Rollout / Integration
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <h3>Join Tech Teams Committed to Change</h3>
+            <p style="max-width: 600px; margin: 1rem auto;">Organizations like Microsoft, Google, and GitHub have started internal discussions on this issue. Let's make it an industry standard.</p>
+        </div>
+    </section>
+
+            <!-- Family & Community Impact Section -->
+    <section id="impact" style="padding: 5rem 5%; background-color: var(--light-bg);">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2 class="section-title" style="text-align: center; color: var(--dark-text); margin-bottom: 2.5rem;">Family & Community Impact</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+
+                <!-- Left: Narrative -->
+                <div>
+                    <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1rem;">Beyond the Office Walls</h3>
+                    <p style="margin-bottom: 1.5rem; line-height: 1.6;">
+                        Our advocacy isn't just about updating corporate jargon—it's about creating space for healing in everyday life. When we remove harmful language from the workplace, we reduce micro-aggressions that spill over into social circles and family dynamics.
+                    </p>
+                    <p style="margin-bottom: 1.5rem; line-height: 1.6;">
+                        Many adoptees report feeling isolated when casual workplace language accidentally retraumatizes them. By normalizing terms like "implementation" and "enablement," we support a culture where adoptees can show up fully as themselves—both professionally and personally.
+                    </p>
+
+                    <div style="background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;">
+                        <div style="background: var(--primary-color); padding: 0.85rem 1.25rem;">
+                            <h4 style="color: var(--white); font-size: 1rem; margin: 0;">Real-World Ripple Effects</h4>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="display: flex; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color);">
+                                <span style="color: var(--primary-color); font-weight: 700; font-size: 1.1rem; flex-shrink: 0;">✓</span>
+                                <div><strong>Families:</strong> Reduced defensiveness during holiday gatherings when language is trauma-informed.</div>
+                            </li>
+                            <li style="display: flex; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color);">
+                                <span style="color: var(--primary-color); font-weight: 700; font-size: 1.1rem; flex-shrink: 0;">✓</span>
+                                <div><strong>Communities:</strong> Creating safer online forums and local meetups where adoptees lead conversations.</div>
+                            </li>
+                            <li style="display: flex; gap: 1rem; padding: 1rem 1.25rem;">
+                                <span style="color: var(--primary-color); font-weight: 700; font-size: 1.1rem; flex-shrink: 0;">✓</span>
+                                <div><strong>Allyship:</strong> Moving from passive awareness to active language advocacy at home.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right: Family Photos -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 0.75rem;">
+                    <img src="img/family1.png" alt="Family together in a supportive environment" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius); grid-column: 1 / -1;">
+                    <img src="img/family2.png" alt="Community members connecting" style="width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius);">
+                    <img src="img/family3.png" alt="Families and advocates collaborating" style="width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius);">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @media (max-width: 768px) {
+            #impact > div > div {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+
+    <!-- Petition / Pledge Section -->
+    <section id="pledge">
+        <h2>Commit to Inclusive Language</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.2rem;">Sign the pledge to ensure your team, company, or personal communications use trauma-informed language.</p>
+        
+        <div class="pledge-form">
+            <form id="pledgeForm">
+                <div class="form-group">
+                    <label for="name">Full Name or Organization</label>
+                    <input type="text" id="name" required placeholder="e.g., Jane Doe or TechCorp">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email (Optional)</label>
+                    <input type="email" id="email" placeholder="Stay updated on our advocacy efforts">
+                </div>
+
+                <div class="form-group">
+                    <label for="pledgeText">Your Commitment</label>
+                    <textarea id="pledgeText" rows="4" placeholder="I promise to use 'Implementation' instead of 'Adoption' in my daily work..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; background-color: var(--primary-color); color: white;">Sign the Pledge</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Outreach / Email Template Section -->
+    <section id="outreach">
+        <h2 class="section-title">Advocate for Change</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Use this template to email your Product or Engineering lead to request a language policy change.</p>
+
+        <div class="mail-merge-template">
+            <pre>
+Subject: Request for Language Policy Update: "Adoption" vs. "Implementation"
+
+Hi [Manager's Name],
+
+I hope this message finds you well.
+
+I am writing to request an update to our internal and external communication style guides regarding the term "adoption." 
+
+Currently, we use phrases like "product adoption" or "user adoption" to describe the rollout of new features. While this is common jargon, it has been brought to our attention that these terms can be deeply triggering for adoptees, effectively erasing complex trauma and reducing identity to a corporate metric.
+
+To foster a more inclusive workplace and align with trauma-informed practices, I recommend we adopt the following replacements:
+
+* "Product Adoption" → "Product Implementation" or "Feature Rollout"
+* "User Adoption" → "User Enablement" or "User Integration"
+
+We want our language to reflect the same empathy and respect we aim to provide in our products.
+
+I'm happy to share resources from groups like the Adoption Impact Initiative if helpful.
+
+Best regards,
+[Your Name]
+            </pre>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="#pledge" class="btn btn-secondary">Join the Advocacy List</a>
+        </div>
+    </section>
+
+    <footer>
+        <h3>Adoption Impact Initiative (AII)</h3>
+        <p>Email: contact@adoptionimpact.org | Website: www.adoptionimpact.org</p>
+        <p>&copy; <span id="currentYear"></span> Adoption Impact Initiative. All Rights Reserved.</p>
+        <div style="margin-top: 1rem;">
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Set Current Year in Footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Handle Pledge Form Submission
+        document.getElementById('pledgeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const pledgeText = document.getElementById('pledgeText').value;
+
+            // Simulate API Call
+            console.log("Pledge Received:", { name, email, pledgeText });
+
+            alert(`Thank you, ${name}! Your commitment to inclusive language has been recorded. We will be in touch soon.`);
+
+            // Reset Form
+            this.reset();
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
